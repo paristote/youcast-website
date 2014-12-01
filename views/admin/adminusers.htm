@@ -1,0 +1,43 @@
+<h2><i class="fa fa-users"></i> - Users</h2>
+<hr/>
+<ul class="nav nav-pills">
+    <li role="presentation" class="{{ @active['all'] }}"><a href="/admin/pages/users">All</a></li>
+    <li role="presentation" class="{{ @active['new'] }}"><a href="/admin/pages/users?display=new">New</a></li>
+    <li role="presentation" class="{{ @active['active'] }}"><a href="/admin/pages/users?display=active">Active</a></li>
+    <li role="presentation" class="{{ @active['inactive'] }}"><a href="/admin/pages/users?display=inactive">Inactive</a></li>
+</ul>
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Active</th>
+        <th>Created</th>
+        <th></th>
+    </thead>
+    <tbody>
+    <repeat group="{{ @allUsers }}" value="{{ @user }}">
+    <tr>
+        <td>{{ @user->userId }}</td>
+        <td>{{ @user->email }}</td>
+        <td>{{ @user->active }}</td>
+        <td>{{ date("F j, Y, g:i a", @user->dateCreated) }}</td>
+        <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/admin/pages/users/e/{{ @user->userId }}">Edit</a></li>
+                <check if="{{ @user->active === 'false' }}">
+                <li><a href="/admin/actions/users/a/{{ @user->userId }}">Activate</a></li>
+                </check>
+                <check if="{{ @user->userId !== @admin_id }}">
+                <li><a href="/admin/actions/users/d/{{ @user->userId }}">Delete</a></li>
+                </check>
+              </ul>
+            </div>
+        </td>
+    </tr>
+    </repeat>
+    </tbody>
+</table>

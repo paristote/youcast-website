@@ -1,0 +1,20 @@
+body
+{
+    padding-top: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fa-green
+{
+    color:#6d6;
+}
+
+.fa-grey
+{
+    color:#999;
+}
+
+.navbar-default .navbar-brand
+{
+    color: red;
+}

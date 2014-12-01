@@ -1,0 +1,12 @@
+.adminlayout .nav-pills > li > a
+{
+    padding: 5px;
+    background-color: white;
+    color: gray;
+}
+
+.adminlayout .nav-pills > li.active > a
+{
+    background-color: lightgray;
+    color: white;
+}

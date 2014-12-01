@@ -1,0 +1,74 @@
+/* GENERAL */
+body.landing 
+{
+    padding-top: 30px;
+	background: #fff url(../img/bg-bw.jpg) left 0% no-repeat;
+    color: black;
+    word-spacing: .2em;
+    line-height: 2em;
+}
+
+.error
+{
+    font-weight: normal;
+    padding-left: 5px;
+}
+/* INTRO AREA */
+.intro 
+{ 
+    padding: 10px;
+    text-align: right;
+}
+
+.intro h1
+{
+    font-weight: 700;
+    font-size: 4em;
+    color: red;
+}
+/* SIGN-IN AREA */
+.box-signin
+{
+    border-radius: 6px;
+    margin-top: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: url(../img/bg-box.png) repeat;
+    text-align: right;
+}
+
+.box-signin h1
+{
+    font-weight: 400;
+    color: red; 
+}
+
+.box-signin .error
+{
+    color: white;
+}
+
+/* FORM FIELDS */
+.box-signin input, .box-invitations input
+{
+    background: url(../img/bg-box.png) repeat;
+    color: white;
+}
+
+/* LINKS AREA */
+.box-links
+{
+    color: white;
+    text-align: right;
+}
+
+.box-links a
+{
+    color: white;
+}
+/* ABOUT */
+.modal-content .modal-header .modal-title
+{
+    color: red;
+    font-weight: 700;
+}

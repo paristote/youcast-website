@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <!-- Intro -->
+        <div class="col-md-offset-4 col-md-4">
+            <div class="intro">
+                <h1 class="text-right">YOUCAST</h1>
+                <p class="text-right">
+                    Save YouTube videos while browsing the web
+                    and watch them later on your mobile
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Sign In -->
+        <div class="col-md-offset-4 col-md-4">
+            <div class="box-signin">
+                <h1>SIGN IN</h1>
+                <form action="/auth" method="POST" role="form" id="loginform">
+                    <div class="form-group">
+                        <input type="email" name="username" class="form-control" placeholder="email" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="password" required="true" />
+                    </div>
+                    <button type="submit" class="btn btn-danger">sign in <i class="fa fa-angle-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bottom bar -->
+<nav class="navbar navbar-fixed-bottom" role="navigation">
+  <div class="container">
+      <div class="col-md-4 box-invitations">
+          <form action="/inviteme" method="POST" role="form" id="inviteform" class="form-inline">
+              <div class="form-group">
+              INVITATIONS
+              </div>
+              <div class="form-group">
+                  <input type="email" name="user_email" class="form-control" placeholder="email" required="true" />
+              </div>
+              <button type="submit" class="btn btn-danger"><i class="fa fa-angle-right"></i></button>
+          </form>
+      </div>
+      <div class="col-md-8 box-links">
+          <a href="#" data-toggle="modal" data-target="#about">ABOUT</a> -
+          <a href="https://twitter.com/paristote" target="_blank">TWITTER</a>
+      </div>
+  </div>
+</nav>
+<!-- About Modal -->
+<include href="about.htm" />

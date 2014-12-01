@@ -1,0 +1,14 @@
+{
+    "videos" : [
+<repeat group="{{ @videosArray }}" key="{{ @i }}" value="{{ @video }}">
+	{
+        "id"            : "{{ @video->videoId }}",
+        "title"         : "{{ @video->videoTitle }}",
+        "downloadCount" : "{{ @video->downloadCount }}",
+        "status"        : "{{ @video->status }}",
+        "username"      : "{{ @video->username }}"
+        }<check if="{{ @i < @length-1 }}">,</check> {* Writes the , until the last element *}
+</repeat>
+    ],
+    "videoCount" : "{{ @length }}"
+}

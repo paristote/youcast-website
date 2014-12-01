@@ -1,0 +1,37 @@
+body.thankyou
+{
+    padding-top: 10px;
+    font-size: 4em;
+}
+
+.thankyou h1
+{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: red; 
+}
+
+.thankyou ul
+{
+    list-style: none;
+}
+
+.thankyou .fa-youtube-square
+{
+    color: red;
+}
+
+.thankyou .fa-twitter-square
+{
+    color: #4099FF;
+}
+
+.thankyou .fa-facebook-square
+{
+    color: #3b5998;
+}
+
+.thankyou a
+{
+    color: inherit;
+}

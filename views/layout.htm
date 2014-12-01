@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+      	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="/resources/js/humane.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href="/resources/css/commons.css" rel="stylesheet">
+        <link href="/resources/css/humane.css" rel="stylesheet">
+        <check if="{{ file_exists('resources/css/'.explode('.',@content)[0].'.css') }}">
+            <link href="/resources/css/{{ explode('.',@content)[0] }}.css" rel="stylesheet">
+        </check>
+		<title>{{ @pageTitle }}</title>
+	</head>
+	<!-- body with class named after the included page name, e.g. home.htm -> home -->
+	<body class="{{ explode('.',@content)[0] }}">
+	    <include href="{{ @content }}" />
+        <check if="{{ isset(@alertMsg) }}">
+            <script type="text/javascript">
+//              TODO move to an external JS file
+                humane.log("{{ @alertMsg }}", { timeout: 4000, clickToClose: true, addnCls: 'humane-libnotify-{{ @alertType}}' });
+                $.validator.addMethod("youtube", function( value ) {
+                    return true;
+//                    TODO validate that the given URL is a Youtube URL and contains a videoId
+//                    http://jqueryvalidation.org/reference/
+//                    return /^http(s)?:\/\/www.youtube.com/.test(value);
+                }, "Not a Youtube URL");
+                $.validator.addClassRules("youtube", { youtube: true});
+                $.each($("form"), function( index, value ) {
+                    $(value).validate(); // activate the validator on each form
+                });
+            </script>
+	   </check>
+	</body>
+</html>

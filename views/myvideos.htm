@@ -1,0 +1,48 @@
+<h2><i class="fa fa-youtube-play"></i> - My Videos</h2>
+<table class="table table-striped">
+	<thead>
+		<th>Title</th>
+		<th>Added</th>
+		<th>Status</th>
+		<th></th>
+	</thead>
+	<tbody>
+<repeat group="{{ @myvideos }}" value="{{ @video }}">
+    <tr>
+    	<td>{{ urldecode(@video->videoTitle) }}</td>
+    	<td>{{ @video->prettyDate() }}</td>
+    	<td>
+            <i class="statusIcon fa fa-{{ @statusIcons[@video->status] }}" data-toggle="tooltip" data-placement="right" 
+                title="{{ @statusLabels[@video->status] }}"></i>
+            <!-- <span class="glyphicon glyphicon-{{ @statusIcons[@video->status] }}" ></span> -->
+        </td>
+    	<td>
+    		<div class="btn-group">
+			  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+                  <!--<i class="fa fa-caret-down"></i>-->
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="/actions/videos/r/{{@user_id}}/{{@video->videoId}}">Reset</a></li>
+			    <li><a href="/actions/videos/d/{{@user_id}}/{{@video->videoId}}">Delete</a></li>
+			  </ul>
+			</div>
+    	</td>
+    </tr>
+</repeat>
+	</tbody>
+</table>
+<script type="text/javascript">
+    $('.statusIcon').tooltip();
+</script>
+<!-- <nav class="pull-right">
+  <ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</nav> -->

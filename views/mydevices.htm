@@ -1,0 +1,23 @@
+<h2><i class="fa fa-tablet"></i> - My Devices</h2>
+<table class="table table-striped">
+	<thead>
+        <th></th>
+		<th>Name</th>
+		<th>ID</th>
+		<th>Connected</th>
+		<th>Delete</th>
+	</thead>
+	<tbody>
+<repeat group="{{ @myDevices }}" value="{{ @device }}">
+    <tr>
+        <td><i class="fa fa-grey fa-{{ @deviceTypes[@device->type] }}" title="{{ @device->type }}"></i></td>
+    	<td>{{ @device->deviceName }}</td>
+    	<td>{{ @device->deviceId }}</td>
+    	<td><check if="{{ @device->connected === 'true' }}"><i class="fa fa-circle fa-green" title="Connected"></i></check></td>
+    	<td>
+            <a href="/actions/devices/d/{{ @user_id }}/{{ @device->deviceId }}" role="button" class="btn btn-default btn-xs"><i class="fa fa-times"></i></a>
+        </td>
+    </tr>
+</repeat>
+	</tbody>
+</table>

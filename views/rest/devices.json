@@ -1,0 +1,13 @@
+{
+    "devices" : [
+<repeat group="{{ @devicesArray }}" key="{{ @i }}" value="{{ @device }}">
+	{
+        "id"          : "{{ @device->deviceId }}",
+        "name"        : "{{ @device->deviceName }}",
+        "connected"   : "{{ @device->connected }}",
+        "username"    : "{{ @device->username }}"
+        }<check if="{{ @i < @length-1 }}">,</check> {* Writes the , until the last element *}
+</repeat>
+    ],
+    "deviceCount" : "{{ @length }}"
+}
