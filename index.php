@@ -5,11 +5,10 @@ $f3 = require('f3/base.php');
 
 // CONFIG
 // debug mode, remove before putting in prod
-$f3->set('DEBUG',3);
-$f3->config('config/setup.cfg');
-//$f3->set('AUTOLOAD', 'app/;app/db/;app/controller/;app/base/;app/model/'); // loads all classes in the app/ directory
+//$f3->set('DEBUG',3);
+$f3->config('files/config/setup.cfg');
 $f3->set('AUTOLOAD', 'app/;app/base/;app/controller/;app/db/;app/model/'); // loads all classes in the app/ directory
-$f3->set('TEMP','tmp/'); // temp directory 
+$f3->set('TEMP','files/tmp/'); // temp directory 
 $f3->set('UI','views/;views/admin/;views/rest/'); // contains all the html views and json response formats
 
 // ROUTES
