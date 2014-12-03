@@ -3,7 +3,7 @@
 /**
  * The REST interface to access Device resources.
  */
-class Device extends \Base\AuthRestAppBase
+class Device extends \base\AuthRestAppBase
 {
 	/**
 	 * GET interface.

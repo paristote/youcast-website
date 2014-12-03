@@ -1,6 +1,6 @@
 <?php
 
-class Admin extends \Base\AdminAppBase
+class Admin extends \base\AdminAppBase
 {
     function dashboard($f3)
     {

@@ -3,7 +3,7 @@
 /**
  * The REST interface to access Video resources.
  */
-class Video extends \Base\AuthRestAppBase
+class Video extends \base\AuthRestAppBase
 {
 	/**
      * REST REQUEST HANDLERS

@@ -4,7 +4,7 @@
  * Operations related to the Home / Landing page.
  * Authenticated:no
  */
-class Home extends \Base\AppBase
+class Home extends \base\AppBase
 {
     /**
      * Landing page

@@ -6,7 +6,7 @@ include_once('app/curl.php');
  * Operations related to the user's home page.
  * Authenticated:yes
  */
-class YouCast extends \Base\AuthAppBase
+class YouCast extends \base\AuthAppBase
 {
 
     /**

@@ -3,7 +3,7 @@
 /**
  * The REST interface to access User resources.
  */
-class User extends \Base\AuthRestAppBase
+class User extends \base\AuthRestAppBase
 {
 	/**
 	 * Ensures that the request is made with correct credentials.
