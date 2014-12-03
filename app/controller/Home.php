@@ -79,6 +79,29 @@ class Home extends \base\AppBase
             $getMsg = "success-signout";
 		$f3->reroute('/hello?msg='.$getMsg);
     }
+    
+    
+    function initadmin($f3)
+    {
+        $u = $f3->get('admin_id');
+        $p = $f3->get('default_pwd');
+        $user = $this->userdb->getUserById($u);
+        if (!$user && isset($u) && isset($p))
+        {
+            $a = new \model\User();
+            $userObj->userId = $u;
+            $userObj->email = $u;
+            $userObj->password = $this->hasher->HashPassword($p);
+            $userObj->active = "true";
+            $userObj->dateCreated = time();
+            $this->userdb->saveUser($a);
+            $f3->reroute('/hello?ok');
+        }
+        else
+        {
+            $f3->reroute('/hello?err');
+        }
+    }
 
 }
 
