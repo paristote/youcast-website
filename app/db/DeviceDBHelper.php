@@ -48,7 +48,7 @@ class DeviceDBHelper extends CommonDBHelper
         $devices->load(array('username' => $username, 'deviceId' => $deviceId));
 
         if (!$devices->dry()) {
-            $d = new \Model\Device();
+            $d = new \model\Device();
 			$d->deviceId = $devices->get('deviceId');
 			$d->deviceName = $devices->get('deviceName');
 			$d->username = $devices->get('username');
@@ -72,7 +72,7 @@ class DeviceDBHelper extends CommonDBHelper
 		$usersDevices = array();
 		while (!$devices->dry())
 		{
-			$d = new \Model\Device();
+			$d = new \model\Device();
 			$d->deviceId = $devices->get('deviceId');
 			$d->deviceName = $devices->get('deviceName');
 			$d->username = $devices->get('username');
@@ -96,7 +96,7 @@ class DeviceDBHelper extends CommonDBHelper
 		$devices->load(array('username' => $username, 'deviceId' => $id));
         $d = NULL;
         if (!$devices->dry()) {
-            $d = new \Model\Device();
+            $d = new \model\Device();
 			$d->deviceId = $devices->get('deviceId');
 			$d->deviceName = $devices->get('deviceName');
 			$d->username = $devices->get('username');

@@ -18,7 +18,7 @@ class VideoDBHelper extends CommonDBHelper
 	private function createVideoObject($videoId, $username, $title, $dl, $status, $date)
 	{
 		$f3 = \Base::instance();
-		$video = new \Model\Video();
+		$video = new \model\Video();
 		$video->videoId = $videoId;
 		$video->username = $username;
 		$video->videoTitle = $title;
@@ -94,12 +94,12 @@ class VideoDBHelper extends CommonDBHelper
     {
         // HACK : create a new Video obj to auto-load the Video.php file
         // which contains the VideoStatus class as well
-        new \Model\Video();
+        new \model\Video();
         // thanks to this hack, the VideoStatus class can be used below
         // TODO separate the Video and VideoStatus classes into 2 files
     	$dls = new \DB\Mongo\Mapper($this->db,'videos');
     	if ($newOnly)
-    		$dls->load(array('username' => $username, 'status' => \Model\VideoStatus::Registered));
+    		$dls->load(array('username' => $username, 'status' => \model\VideoStatus::Registered));
     	else
     		$dls->load(array('username' => $username));
     	$videos = array();
@@ -154,14 +154,14 @@ class VideoDBHelper extends CommonDBHelper
     {
         // HACK : create a new Video obj to auto-load the Video.php file
         // which contains the VideoStatus class as well
-        new \Model\Video();
+        new \model\Video();
         // thanks to this hack, the VideoStatus class can be used below
         // TODO separate the Video and VideoStatus classes into 2 files
         $dls = new \DB\Mongo\Mapper($this->db,'videos');
     	$dls->load(array('videoId' => $id, 'username' => $username));
         if (!$dls->dry())
         {
-               $dls->set('status', \Model\VideoStatus::Registered);
+               $dls->set('status', \model\VideoStatus::Registered);
                return $dls->save();
         }
         

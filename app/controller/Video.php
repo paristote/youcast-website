@@ -51,26 +51,26 @@ class Video extends \base\AuthRestAppBase
 		$videoId = $f3->get('PARAMS.videoId');
 		$inputJSON = $f3->get('BODY');
         $input= json_decode( $inputJSON, TRUE ); //convert JSON into array
-        $video = new \Model\Video();
+        $video = new \model\Video();
         $video->videoTitle = '';
         $video->username = $username;
         $video->videoId = $videoId;
         $video->downloadCount = $input['downloadCount'];
         switch ($input['status']) {
         	case '1':
-        		$video->status = \Model\VideoStatus::Scheduled;
+        		$video->status = \model\VideoStatus::Scheduled;
         		break;
         	case '2':
-        		$video->status = \Model\VideoStatus::Started;
+        		$video->status = \model\VideoStatus::Started;
         		break;
         	case '3':
-        		$video->status = \Model\VideoStatus::Done;
+        		$video->status = \model\VideoStatus::Done;
         		break;
         	case '10':
-        		$video->status = \Model\VideoStatus::Failed;
+        		$video->status = \model\VideoStatus::Failed;
         		break;
         	default:
-        		$video->status = \Model\VideoStatus::Registered;
+        		$video->status = \model\VideoStatus::Registered;
         		break;
         }
         $this->videodb->updateVideo($video);

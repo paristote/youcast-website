@@ -31,7 +31,7 @@ class UserDBHelper extends CommonDBHelper
         $users = new \DB\Mongo\Mapper($this->db,'users');
         $users->load(array('userId' => $userId));
         if (!$users->dry()) {
-            $u = new \Model\User();
+            $u = new \model\User();
             $u->userId = $users->userId;
             $u->email = $users->email;
             $u->password = $users->password;
@@ -64,7 +64,7 @@ class UserDBHelper extends CommonDBHelper
         $allusers = array();
         foreach($array as $user)
         {
-            $u = new \Model\User();
+            $u = new \model\User();
             $u->userId = $user->userId;
             $u->email = $user->email;
 //            $u->password = $users->password;
@@ -87,7 +87,7 @@ class UserDBHelper extends CommonDBHelper
         $users->load(array('userId' => $userId));
         $u = NULL;
         if (!$users->dry()) {
-            $u = new \Model\User();
+            $u = new \model\User();
             $u->userId = $users->userId;
             $u->email = $users->email;
             $u->password = $users->password;

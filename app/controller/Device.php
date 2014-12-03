@@ -40,7 +40,7 @@ class Device extends \base\AuthRestAppBase
         $inputJSON = $f3->get('BODY');
         $input= json_decode( $inputJSON, TRUE ); //convert JSON into array
         $deviceId = $input['id'];
-        $deviceObj = new \Model\Device();
+        $deviceObj = new \model\Device();
         $deviceObj->deviceId = $deviceId;
         $deviceObj->deviceName = $input['name'];
         $deviceObj->username = $username;

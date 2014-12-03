@@ -84,7 +84,7 @@ class Admin extends \base\AdminAppBase
         if (isset($userId))
         {
             $active = $f3->get('POST.inputActive');
-            $user = new \Model\User();
+            $user = new \model\User();
             $user->userId = $userId;
             $user->email = $f3->get('POST.inputEmail');
             $user->active = isset($active) ? 'true' : 'false';

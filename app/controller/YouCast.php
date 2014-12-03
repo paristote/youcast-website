@@ -36,8 +36,8 @@ class YouCast extends \base\AuthAppBase
 //            }
 //        }
     	$f3->set('myvideos', $myVideos);
-    	$f3->set('statusIcons', \Model\VideoStatus::$icons);
-    	$f3->set('statusLabels', \Model\VideoStatus::$labels);        
+    	$f3->set('statusIcons', \model\VideoStatus::$icons);
+    	$f3->set('statusLabels', \model\VideoStatus::$labels);        
         $f3->set('mainContent', 'myvideos.htm');
     	$f3->set('content', 'home.htm');
     }
@@ -55,12 +55,12 @@ class YouCast extends \base\AuthAppBase
             {
                 $username = $f3->get('SESSION.user_id');
                 $title = $this->getVideoTitle($videoId);
-                $video = new \Model\Video();
+                $video = new \model\Video();
                 $video->videoId = $videoId;
                 $video->username = $username;
                 $video->videoTitle = $title;
                 $video->addedDate = time();
-                $video->status = \Model\VideoStatus::Registered;
+                $video->status = \model\VideoStatus::Registered;
                 $this->videodb->saveVideo($video);
                 $f3->reroute('/?msg=success-video-submit');
             }

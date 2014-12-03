@@ -45,7 +45,7 @@ class Home extends \base\AppBase
         
         $user = $this->userdb->getUserById($email);
         if (!$user) {
-            $userObj = new \Model\User();
+            $userObj = new \model\User();
             $userObj->userId = $email;
             $userObj->email = $email;
             $userObj->password = "";
