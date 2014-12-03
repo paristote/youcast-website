@@ -88,13 +88,13 @@ class Home extends \base\AppBase
         $user = $this->userdb->getUserById($u);
         if (!$user && isset($u) && isset($p))
         {
-            $a = new \model\User();
+            $userObj = new \model\User();
             $userObj->userId = $u;
             $userObj->email = $u;
             $userObj->password = $this->hasher->HashPassword($p);
             $userObj->active = "true";
             $userObj->dateCreated = time();
-            $this->userdb->saveUser($a);
+            $this->userdb->saveUser($userObj);
             $f3->reroute('/hello?ok');
         }
         else
