@@ -31,9 +31,9 @@ class AppBase {
 	 * Init the $f3 and the $db variables
 	 */
 	function __construct() {
-		$this->videodb = new \DB\VideoDBHelper();
-		$this->devicedb = new \DB\DeviceDBHelper();
-        $this->userdb = new \DB\UserDBHelper();
+		$this->videodb = new \db\VideoDBHelper();
+		$this->devicedb = new \db\DeviceDBHelper();
+        $this->userdb = new \db\UserDBHelper();
         $this->hasher = new \PasswordHash(10, FALSE);
 	}
 

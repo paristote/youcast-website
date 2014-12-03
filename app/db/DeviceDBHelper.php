@@ -1,5 +1,5 @@
 <?php
-namespace DB;
+namespace db;
 
 /**
  * Helper to access the devices collection.

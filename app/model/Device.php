@@ -1,5 +1,5 @@
 <?php
-namespace Model;
+namespace model;
 
 class Device
 {
