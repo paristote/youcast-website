@@ -32,7 +32,8 @@ class AuthRestAppBase extends RestAppBase
 	function beforeRoute($f3) {
 
 //		$auth = $f3->get('HEADERS.Authorization');
-        $auth = apache_request_headers()["Authorization"];
+        $headers = apache_request_headers();
+        $auth = $headers["Authorization"];
 		if (!isset($auth)) $this->error401($f3, "No Authorization header found"); // No Authorization header found
 		$a = explode(" ", $auth);
 		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization header"); // Header is not "Basic abcxyz"
