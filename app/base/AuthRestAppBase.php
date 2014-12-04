@@ -31,7 +31,7 @@ class AuthRestAppBase extends RestAppBase
 	 */
 	function beforeRoute($f3) {
         
-        $fh = fopen('php://stderr', 'w');
+        $fh = fopen('php://stdout', 'w');
 
 		$auth = $f3->get('HEADERS.Authorization');
         fwrite($fh, "\nAuthorization: ".$auth."\n");
