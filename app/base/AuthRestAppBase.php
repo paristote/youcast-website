@@ -30,9 +30,11 @@ class AuthRestAppBase extends RestAppBase
 	 * @param Object $f3 F3
 	 */
 	function beforeRoute($f3) {
+        
+        $fh = fopen('php://stderr', 'w');
 
 		$auth = $f3->get('HEADERS.Authorization');
-        error_log("Authorization: ".$auth);
+        fwrite($fh, "\nAuthorization: ".$auth."\n");
 		if (!isset($auth)) $this->error401($f3, "Authentication required"); // No Authorization header found
 		$a = explode(" ", $auth);
 		if (count($a) < 2) $this->error401($f3, "Authentication required"); // Incorrect header
@@ -44,7 +46,7 @@ class AuthRestAppBase extends RestAppBase
         $dbuser = $this->userdb->getUserById($user);
     	if ($dbuser === NULL || $dbuser->active === "false" || !$this->hasher->CheckPassword($pass,$dbuser->password))
         {
-            error_log("Cred: ".$cred);
+            fwrite($fh, "\nCred: ".$cred."\n");
 			$this->error401($f3, "You cannot access this resource"); // Incorrect credentials
         }
 
