@@ -32,16 +32,21 @@ class AuthRestAppBase extends RestAppBase
 	function beforeRoute($f3) {
 
 //		$auth = $f3->get('HEADERS.Authorization');
-        $headers = apache_request_headers();
-        $auth = $headers["Authorization"];
-		if (!isset($auth)) $this->error401($f3, "No Authorization header found"); // No Authorization header found
-		$a = explode(" ", $auth);
-		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization header"); // Header is not "Basic abcxyz"
-		$cred = base64_decode($a[1]);
-		$a = explode(":", $cred);
-		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization credentials"); // Incorrect credentials
-		$user = $a[0];
-        $pass = $a[1];
+//      RewriteCond %{HTTP:Authorization} ^(.*)
+//      RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+        
+//        $headers = apache_request_headers();
+//        $auth = $headers["Authorization"];
+//		if (!isset($auth)) $this->error401($f3, "No Authorization header found"); // No Authorization header found
+//		$a = explode(" ", $auth);
+//		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization header"); // Header is not "Basic abcxyz"
+//		$cred = base64_decode($a[1]);
+//		$a = explode(":", $cred);
+//		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization credentials"); // Incorrect credentials
+//		$user = $a[0];
+//        $pass = $a[1];
+        $user = $_SERVER['PHP_AUTH_USER'];
+        $pass = $_SERVER['PHP_AUTH_PW'];
         $dbuser = $this->userdb->getUserById($user);
     	if ($dbuser === NULL || $dbuser->active === "false" || !$this->hasher->CheckPassword($pass,$dbuser->password))
 			$this->error401($f3, "You cannot access this resource"); // Incorrect credentials
