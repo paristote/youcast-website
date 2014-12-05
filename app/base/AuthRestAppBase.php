@@ -47,6 +47,7 @@ class AuthRestAppBase extends RestAppBase
 //        $pass = $a[1];
         $user = $_SERVER['PHP_AUTH_USER'];
         $pass = $_SERVER['PHP_AUTH_PW'];
+//        SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
         $dbuser = $this->userdb->getUserById($user);
     	if ($dbuser === NULL || $dbuser->active === "false" || !$this->hasher->CheckPassword($pass,$dbuser->password))
 			$this->error401($f3, "You cannot access this resource"); // Incorrect credentials
