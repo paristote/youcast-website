@@ -30,24 +30,25 @@ class AuthRestAppBase extends RestAppBase
 	 * @param Object $f3 F3
 	 */
 	function beforeRoute($f3) {
-
+        $auth = NULL;
+        if (array_key_exists('HTTP_AUTHORIZATION', $_SERVER))
+            $auth = $_SERVER["HTTP_AUTHORIZATION"];
+        else if (array_key_exists('REDIRECT_HTTP_AUTHORIZATION', $_SERVER))
+            $auth = $_SERVER["REDIRECT_HTTP_AUTHORIZATION"];
+            
 //		$auth = $f3->get('HEADERS.Authorization');
 //      RewriteCond %{HTTP:Authorization} ^(.*)
 //      RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
-        
-//        $headers = apache_request_headers();
-//        $auth = $headers["Authorization"];
-//		if (!isset($auth)) $this->error401($f3, "No Authorization header found"); // No Authorization header found
-//		$a = explode(" ", $auth);
-//		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization header"); // Header is not "Basic abcxyz"
-//		$cred = base64_decode($a[1]);
-//		$a = explode(":", $cred);
-//		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization credentials"); // Incorrect credentials
-//		$user = $a[0];
-//        $pass = $a[1];
-        $user = $_SERVER['PHP_AUTH_USER'];
-        $pass = $_SERVER['PHP_AUTH_PW'];
-//        SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+//      SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+		if (!isset($auth)) $this->error401($f3, "No Authorization header found"); // No Authorization header found
+		$a = explode(" ", $auth);
+		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization header"); // Header is not "Basic abcxyz"
+		$cred = base64_decode($a[1]);
+		$a = explode(":", $cred);
+		if (count($a) < 2) $this->error401($f3, "Incorrect Authorization credentials"); // Incorrect credentials
+		$user = $a[0];
+        $pass = $a[1];
         $dbuser = $this->userdb->getUserById($user);
     	if ($dbuser === NULL || $dbuser->active === "false" || !$this->hasher->CheckPassword($pass,$dbuser->password))
 			$this->error401($f3, "You cannot access this resource"); // Incorrect credentials
