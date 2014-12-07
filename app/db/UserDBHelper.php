@@ -110,6 +110,8 @@ class UserDBHelper extends CommonDBHelper
         if (!$users->dry()) {
             $users->email = $userObj->email;
             $users->active = $userObj->active;
+            if (isset($userObj->password))
+                $users->password = $userObj->password;
             return ($users->save());
         }
         return false;

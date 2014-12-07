@@ -37,6 +37,10 @@ $f3->route('GET /actions/videos/r/@username/@videoId', 'YouCast->resetVideo');
 $f3->route('GET /pages/devices/@username', 'YouCast->myDevices');
 $f3->route('GET /actions/devices/d/@username/@deviceId', 'YouCast->deleteDevice');
 
+// User settings
+$f3->route('GET /pages/settings/@username', 'UserSettings->settings');
+$f3->route('POST /actions/settings/changepass', 'UserSettings->changePassword');
+
 // REST
 // REST access to Videos with JSON format
 $f3->map('/users/@username/videos', 'Video');
@@ -49,9 +53,9 @@ $f3->route('POST /users/@username/connect', 'User->connect');
 
 // Admin pages
 $f3->route('GET /admin/init', 'Home->initadmin');
-$f3->route('GET /admin/phpinfo', function($f3) {
-   phpinfo(); 
-});
+//$f3->route('GET /admin/phpinfo', function($f3) {
+//   phpinfo(); 
+//});
 $f3->route('GET /admin', 'Admin->dashboard');
 $f3->route('GET /admin/pages/users', 'Admin->allUsers');
 $f3->route('GET /admin/pages/users/e/@username', 'Admin->editUserForm');
